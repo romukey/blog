@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "My blog",
+  "description": "My portfolio",
   "author": "romukey",
   "private": true,
   "scripts": {
