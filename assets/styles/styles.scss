@@ -1,0 +1,174 @@
+/* -- reset ------------------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.text {
+  &-h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  &-h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  &-h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+  &-h4 {
+    font-size: 1.125rem;
+  }
+  &-p {
+    font-size: 1rem;
+  }
+  &-small {
+    font-size: 0.8em;
+  }
+  &-bold {
+    font-weight: bold;
+  }
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+img,
+canvas,
+iframe {
+  max-width: 100%;
+  border: none;
+  vertical-align: bottom;
+}
+
+a,
+a:hover,
+a:link {
+  color: inherit;
+}
+
+a,
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 770px) {
+  html,
+  body {
+    height: auto;
+  }
+}
+
+html,
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN', Meiryo, 'メイリオ', sans-serif;
+  line-height: 1.4;
+  font-weight: 300;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  word-wrap: break-word;
+  word-break: break-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+}
+
+.fullwindow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  z-index: 9999;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  max-width: $breakpoint-tablet;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: $breakpoint-tablet) {
+  .content {
+    padding: 0 3.2%;
+  }
+}
+
+.content-grid {
+  width: 100%;
+  display: flex;
+  padding-top: 20px;
+  max-width: $breakpoint-tablet;
+  margin: 0 auto;
+
+  .main-column {
+    flex: 1;
+    padding-right: 20px;
+  }
+  .side-column {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-tablet) {
+  .content-grid {
+    display: block;
+    max-width: 100%;
+    padding: 20px 3.2% 0;
+
+    .main-column {
+      width: 100%;
+      padding: 0;
+    }
+    .side-column {
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+#error {
+  text-align: center;
+  margin: 5em;
+  padding: 2em;
+  border-radius: 5px;
+
+  > div {
+    margin: 1em;
+  }
+}

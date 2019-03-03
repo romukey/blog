@@ -1,65 +1,96 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        Portfolio
-      </h1>
-      <h2 class="subtitle">
-        My portfolio
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div class="portfolio-top">
+    <section class="introduction-section-wrapper">
+      <div class="introduction-wrapper" data-aos="fade-up">
+        <div class="introduction-text">
+          <h1>
+            アカペラとスノボが大好きなエンジニア
+            <br> 利用するのに場所や時間を選ばない
+            <br> インターネット上で誰かの役に立ててばいいなと思いながらサービス作りしてます
+          </h1>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <section class="portfolio-logo-section-wrapper" data-aos="fade" data-aos-delay="200">
+        <portfolio-logo />
+      </section>
+    </section>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import PortfolioLogo from '~/components/atoms/portfolio-logo.vue'
 
 export default {
   components: {
-    Logo
-  }
+    PortfolioLogo,
+  },
+  head() {
+    return {
+      title: 'トップページ',
+      meta: [this.$metaInfo.getDescription(this.description), this.$metaInfo.getKeywords('ポートフォリオ, portfolio, nuxtjs, romukey')],
+    }
+  },
+  data() {
+    return {
+      description: `アカペラとスノボが大好きなエンジニア。メインはサーバーサイド。最近はNuxtjsでの業務でフロントにはまり、フロントサイドやデザインへ転向中。`,
+    }
+  },
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss" scoped>
+.portfolio-top {
+  height: calc(100vh - 100px);
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .introduction-section-wrapper {
+    height: 100%;
+    background: $dark_navy;
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+    .introduction-wrapper {
+      max-width: $breakpoint-pc-large;
+      margin: 0 auto;
 
-.links {
-  padding-top: 15px;
+      .introduction-text {
+        height: 375px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $blue;
+        width: 70%;
+        margin: 0 auto;
+
+        h1 {
+          text-align: center;
+        }
+      }
+    }
+
+    .portfolio-logo-section-wrapper {
+      margin-top: -50px;
+      z-index: 2;
+      text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: $breakpoint-mobile) {
+    .introduction-section-wrapper {
+      .introduction-wrapper {
+        .introduction-text {
+          width: 75%;
+          height: 300px;
+
+          h1 {
+            word-wrap: break-word;
+            font-size: 1.5em;
+          }
+        }
+      }
+
+      .portfolio-logo-section-wrapper {
+        margin-top: -25px;
+      }
+    }
+  }
 }
 </style>

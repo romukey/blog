@@ -1,5 +1,5 @@
 const pkg = require('./package')
-
+const StylelintPlugin = require('stylelint-webpack-plugin')
 const baseRoute = env => (env === 'GH_PAGES' ? '/portfolio/' : '/')
 
 module.exports = {
@@ -9,23 +9,25 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    titleTemplate: `%s | ROMUKEY PORTFOLIO`,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'viewport', name: 'viewport', content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no' },
+      { hid: 'http-equiv', 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' },
+      { hid: 'description', name: 'description', content: 'ROMUKEY Portfolio Built by Nuxtjs' },
+      { hid: 'robots', name: 'robots', content: 'index, follow' },
     ],
     link: [
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: baseRoute(process.env.DEPLOY_ENV) + 'favicon.ico'
-      }
-    ]
+        href: baseRoute(process.env.DEPLOY_ENV) + 's/images/logo.jpg',
+      },
+    ],
   },
 
   router: {
-    base: baseRoute(process.env.DEPLOY_ENV)
+    base: baseRoute(process.env.DEPLOY_ENV),
   },
 
   /*
@@ -36,12 +38,17 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: ['~assets/styles/styles.scss'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    '~/plugins/constant.js',
+    '~/plugins/meta-info.js',
+    { src: '~/plugins/aos.js', ssr: false },
+    { src: '~/plugins/doughnut-chart.js', ssr: false },
+  ],
 
   /*
   ** Nuxt.js modules
@@ -50,13 +57,37 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources',
+    [
+      'nuxt-fontawesome',
+      {
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: ['fas'],
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['fab'],
+          },
+          {
+            set: '@fortawesome/free-regular-svg-icons',
+            icons: ['far'],
+          },
+        ],
+      },
+    ],
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  styleResources: {
+    scss: './assets/styles/variables/*.scss',
   },
 
   /*
@@ -73,9 +104,14 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
+        config.plugins.push(
+          new StylelintPlugin({
+            files: ['**/*.vue', '**/*.scss'],
+          })
+        )
       }
-    }
-  }
+    },
+  },
 }
