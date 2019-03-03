@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio-logo">
-    <img src="/s/images/logo.jpg">
+    <img :src="$img.addPortfolioPrefix('/s/images/logo.jpg')">
   </div>
 </template>
 

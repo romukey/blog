@@ -1,6 +1,6 @@
 const pkg = require('./package')
 const StylelintPlugin = require('stylelint-webpack-plugin')
-const baseRoute = env => (env === 'GH_PAGES' ? '/portfolio/' : '/')
+const baseRoute = env => (env === 'GH_PAGES' ? '/portfolio' : '')
 
 module.exports = {
   mode: 'universal',
@@ -21,7 +21,7 @@ module.exports = {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: baseRoute(process.env.DEPLOY_ENV) + 's/images/logo.jpg',
+        href: baseRoute(process.env.DEPLOY_ENV) + '/s/images/logo.jpg',
       },
     ],
   },
@@ -45,6 +45,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/constant.js',
+    '~/plugins/img.js',
     '~/plugins/meta-info.js',
     { src: '~/plugins/aos.js', ssr: false },
     { src: '~/plugins/doughnut-chart.js', ssr: false },
