@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-top">
     <section class="introduction-section-wrapper">
-      <div class="introduction-wrapper" data-aos="fade-up">
+      <div class="introduction-wrapper">
         <div class="introduction-text">
           <h1>
             アカペラとスノボが大好きなエンジニア
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <section class="portfolio-logo-section-wrapper" data-aos="fade" data-aos-delay="200">
+      <section class="portfolio-logo-section-wrapper">
         <portfolio-logo />
       </section>
     </section>

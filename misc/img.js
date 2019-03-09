@@ -1,5 +1,7 @@
+import path from 'path'
+
 export default {
-  addPortfolioPrefix(path) {
-    return process.env.DEPLOY_ENV ? `/portfolio/${path}` : path
+  addPortfolioPrefix(imagePath) {
+    return process.env.DEPLOY_ENV === 'GH_PAGES' ? path.join('/portfolio', imagePath) : imagePath
   },
 }
