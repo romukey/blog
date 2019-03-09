@@ -1,9 +1,13 @@
-const pkg = require('./package')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const baseRoute = env => (env === 'GH_PAGES' ? '/portfolio' : '')
+const portfolioContext = require('./portfolio.config.js')
 
 module.exports = {
   mode: 'universal',
+
+  env: {
+    portfolio: portfolioContext,
+  },
 
   /*
   ** Headers of the page
@@ -47,6 +51,7 @@ module.exports = {
     '~/plugins/constant.js',
     '~/plugins/img.js',
     '~/plugins/meta-info.js',
+    '~/plugins/portfolio-context.js',
     { src: '~/plugins/aos.js', ssr: false },
     { src: '~/plugins/doughnut-chart.js', ssr: false },
   ],

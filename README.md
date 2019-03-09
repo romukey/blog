@@ -1,22 +1,23 @@
-# blog
+# Portfolio
 
-> My blog
+## 概要
+Nuxtjsで開発されたポートフォリオサイトです。
 
-## Build Setup
+My portfolio Website built by Nuxtjs.
+
+https://romukey.github.io/portfolio
+
+## DEVELOPMENT
 
 ``` bash
-# install dependencies
+$ brew install ndenv
+$ ndenv install `cat .node-version`
 $ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## Deploy 
+
+Github Pagesを使用しています。
+masterブランチにプルリクエストがマージされると、CircleCI経由で自動デプロイされます。
+
+This is published by Github Pages. Automatic deploy is setup. Any commit or change through pull requests to master branch will be automatically deployed.

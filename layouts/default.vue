@@ -1,6 +1,7 @@
 <template>
   <div class="portfolio-default-layout">
     <portfolio-header />
+    <portfolio-slide-menu />
 
     <nuxt />
   </div>
@@ -8,10 +9,12 @@
 
 <script>
 import PortfolioHeader from '~/components/organisms/portfolio-header.vue'
+import PortfolioSlideMenu from '~/components/organisms/portfolio-slide-menu.vue'
 
 export default {
   components: {
     PortfolioHeader,
+    PortfolioSlideMenu,
   },
 }
 </script>

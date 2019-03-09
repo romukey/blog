@@ -6,24 +6,17 @@
           ROMUKEY
         </nuxt-link>
       </div>
-      <div class="nav-bar">
-        <portfolio-header-menu :menus="menus" />
-      </div>
-      <div class="sns">
-        <portfolio-header-sns />
-      </div>
+      <portfolio-slide-menu-opener />
     </div>
   </header>
 </template>
 
 <script>
-import PortfolioHeaderMenu from '~/components/molecules/portfolio-header-menu.vue'
-import PortfolioHeaderSns from '../molecules/portfolio-header-sns.vue'
+import PortfolioSlideMenuOpener from '~/components/molecules/portfolio-slide-menu-opener.vue'
 
 export default {
   components: {
-    PortfolioHeaderSns,
-    PortfolioHeaderMenu,
+    PortfolioSlideMenuOpener,
   },
   data() {
     return {
@@ -36,7 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .portfolio-header {
-  padding: 1em 1.5em;
+  padding: 1em 2em;
   background: $dark_navy;
   height: 100px;
 
@@ -45,6 +38,7 @@ export default {
     margin: 0 auto;
     padding: 15px 0;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
 
     .title {
@@ -55,19 +49,9 @@ export default {
         text-decoration: none;
       }
     }
-
-    .nav-bar {
-      width: 60%;
-    }
-
-    .sns {
-      width: 20%;
-    }
   }
-}
 
-@media only screen and (max-width: $breakpoint-mobile) {
-  .portfolio-header {
+  @media only screen and (max-width: $breakpoint-mobile) {
     .header-menu {
       .title {
         width: 50%;
