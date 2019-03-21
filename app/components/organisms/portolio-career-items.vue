@@ -7,10 +7,7 @@
     </div>
     <div class="career-item-wrapper">
       <ul class="career-items">
-        <li
-          v-for="(career, index) in careers"
-          :key="index"
-        >
+        <li v-for="(career, index) in careers" :key="index">
           <portfolio-career-item
             :company-name="career.companyName"
             :job-description="career.jobDescription"

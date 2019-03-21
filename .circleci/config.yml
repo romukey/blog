@@ -2,42 +2,58 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/node:10.14.0
+      - image: circleci/node:10.14.0
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - npm-{{ checksum "package.json" }}
-    - run: npm install
-    - save_cache:
-        paths:
-        - node_modules
-        key: npm-{{ checksum "package.json" }}
-    - run: npm run lint
-    - run: npm run test
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - npm-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-{{ checksum "package.json" }}
+      - run: npm run lint
 
   deploy:
     docker:
-    - image: circleci/node:10.14.0
+      - image: circleci/node:10.14.0
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - npm-{{ checksum "package.json" }}
-    - run: npm install
-    - run: git config user.name $GITHUB_NAME
-    - run: git config user.email $GITHUB_EMAIL
-    - run: npm run generate:gh-pages
-    - run: npm run deploy:gh-pages
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-{{ checksum "package.json" }}
+      - run: npm run build
+      - run:
+          name: install packages in functions directory
+          command: cd functions && npm install && cd ../
+      - run:
+          name: clean functions ssr directory
+          command: npm run functions:ssr:clean
+      - run:
+          name: copy dist directory to function
+          command: npm run build:copy
+      - run:
+          name: firebase deploy
+          command: |
+            project_id=$DEV_PROJECT_ID
+            if [ "$CIRCLE_BRANCH" = "master" ]; then
+              project_id=$PROJECT_ID
+            fi
+
+            ./scripts/deploy-firebase.sh -p $project_id -t $FIREBASE_TOKEN
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-    - build
-    - deploy:
-        requires:
-        - build
-        filters:
-          branches:
-            only: master
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - develop

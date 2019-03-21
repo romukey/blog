@@ -1,8 +1,5 @@
 <template>
-  <nuxt-link
-    to="/"
-    class="portfolio-tech-btn"
-  >
+  <nuxt-link to="/" class="portfolio-tech-btn">
     <font-awesome-icon class="tech-icon fa-2x" :icon="techIconClass" />
   </nuxt-link>
 </template>

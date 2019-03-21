@@ -1,9 +1,6 @@
 <template>
   <div class="portfolio-slide-menu-opener" @click="open">
-    <font-awesome-icon
-      :icon="menuIconClass"
-      class="menu-icon fa-2x"
-    />
+    <font-awesome-icon :icon="menuIconClass" class="menu-icon fa-2x" />
   </div>
 </template>
 

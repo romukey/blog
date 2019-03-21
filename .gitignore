@@ -3,6 +3,10 @@
 .DS_Store
 demo
 
+### firebase
+.firebaserc
+.firebase
+
 ### Node template
 # Logs
 logs

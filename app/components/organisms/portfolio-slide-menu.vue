@@ -16,14 +16,20 @@
           </nuxt-link>
           <div
             class="menu-item"
-            @click="openInNewTab($portfolio.github.url); close();"
+            @click="
+              openInNewTab($portfolio.github.url)
+              close()
+            "
           >
             <portfolio-github-btn />
             <p class="menu-text">Github</p>
           </div>
           <div
             class="menu-item"
-            @click="openInNewTab($portfolio.twitter.url); close();"
+            @click="
+              openInNewTab($portfolio.twitter.url)
+              close()
+            "
           >
             <portfolio-twitter-btn />
             <p class="menu-text">Twitter</p>

@@ -7,10 +7,7 @@
     </div>
     <div class="strengths-items-wrapper">
       <ul class="strengths-items">
-        <li
-          v-for="(strength, index) in strengths"
-          :key="index"
-        >
+        <li v-for="(strength, index) in strengths" :key="index">
           <portfolio-strength-item :summary="strength.summary" :description="strength.description" :icon-style="strength.iconStyle" />
         </li>
       </ul>

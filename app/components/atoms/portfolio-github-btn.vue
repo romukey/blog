@@ -1,8 +1,5 @@
 <template>
-  <a
-    :href="$portfolio.github.url"
-    class="portfolio-github-btn"
-  >
+  <a :href="$portfolio.github.url" class="portfolio-github-btn">
     <font-awesome-icon class="github-icon fa-2x" :icon="githubIconClass" />
   </a>
 </template>

@@ -1,9 +1,6 @@
 <template>
-  <nuxt-link
-    to="/"
-    class="portfolio-logo-btn"
-  >
-    <img :src="$img.addPortfolioPrefix('/s/images/logo.jpg')">
+  <nuxt-link to="/" class="portfolio-logo-btn">
+    <img :src="$img.addPortfolioPrefix('/s/images/logo.jpg')" />
   </nuxt-link>
 </template>
 
